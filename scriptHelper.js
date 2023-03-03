@@ -26,24 +26,25 @@ function validateInput(testInput) {
    
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
   if(validateInput(pilot) === "Empty" ||
   validateInput(copilot) === 'Empty'||
   validateInput(fuelLevel) === 'Empty'||
   validateInput(cargoMass) === 'Empty'){
-    alert("Make sure to enter valid information for each field!");
+    alert("All fields required.");
   }
-  if(validateInput(pilot) === "Is a Number" ||
-  validateInput(copilot === "Is a Number") || 
+  else if(validateInput(pilot) === "Is a Number" ||
+  validateInput(copilot) === "Is a Number" || 
   validateInput(fuelLevel) === "Not a Number" ||
   validateInput(cargoMass)=== "Not a Number") {
     alert("Make sure to enter valid information for each field!");
   }
-  if(validateInput(pilot) === "Not a Number" || validateInput===(copilot) === "Not a Number") {
+    else {
+       // alert("test my else.");
     document.getElementById("pilotStatus").textContent = `Pilot ${pilot} is ready for launch`
     document.getElementById("copilotStatus").textContent = `Co Pilot ${copilot} is ready for launch`
-    }
-  if(Number(fuelLevel) < 10000){
+    
+    if(Number(fuelLevel) < 10000){
     list.style.visibility = "visible";
     document.getElementById("fuelStatus").innerHTML = `Fuel Level too low for launch`;
     document.getElementById("launchStatus").innerHTML = `shuttle not Ready for Launch`;
@@ -64,16 +65,19 @@ if(Number(cargoMass) <= 10000 && Number(fuelLevel) >= 10000){
     document.getElementById('fuelStatus').innerHTML = 'Fuel level high enough for launch';
     document.getElementById('cargoStatus').innerHTML = 'Cargo mass low enough for launch';
     document.getElementById('launchStatus').innerHTML = 'Shuttle is ready for Launch';
-    document.getElementById('launchStatus').style.color = "rgb(65, 159, 106)";
+    document.getElementById('launchStatus').style.color = "rgb(65, 159, 106";
     }
+  }
 };
 
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await (await fetch("https://handlers.education.launchcode.org/static/planets.json")).json();
-    return planetsReturned;
+     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
+     return response.json();
+    });
 
+     return planetsReturned;
 }
 
 function pickPlanet(planets) {

@@ -26,7 +26,10 @@ window.addEventListener("load", function() {
             missionTarget.image
 
         );
+    });
+       
         document.querySelector("form").addEventListener("submit",function(event){
+            event.preventDefault();  
             let pilotName = document.querySelector("input[name=pilotName");
             let copilotName = document.querySelector("input[name=copilotName]");
             let fuelLevel = document.querySelector("input[name=fuelLevel]");
@@ -40,11 +43,9 @@ window.addEventListener("load", function() {
                 faultyItems,
                 pilotName.value,
                 copilotName.value,
-                fuelLevel.value,
-                cargoMass
+                Number(fuelLevel.value),
+                Number(cargoMass.value)
             );
-            event.preventDefault();  
+           // event.preventDefault();  
         });
-    });
-   
 });
