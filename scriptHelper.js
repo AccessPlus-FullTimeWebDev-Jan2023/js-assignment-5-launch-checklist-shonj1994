@@ -42,20 +42,20 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     else {
        // alert("test my else.");
     document.getElementById("pilotStatus").textContent = `Pilot ${pilot} is ready for launch`
-    document.getElementById("copilotStatus").textContent = `Co Pilot ${copilot} is ready for launch`
+    document.getElementById("copilotStatus").textContent = `Co-Pilot ${copilot} is ready for launch`
     
     if(Number(fuelLevel) < 10000){
     list.style.visibility = "visible";
-    document.getElementById("fuelStatus").innerHTML = `Fuel Level too low for launch`;
-    document.getElementById("launchStatus").innerHTML = `shuttle not Ready for Launch`;
-    document.getElementById("launchStatus").style.color = "rgb(199, 37, 78)";
+    document.getElementById("fuelStatus").innerHTML = 'Fuel level too low for launch';
+    document.getElementById("launchStatus").innerHTML = 'Shuttle Not Ready for Launch'
+    document.getElementById("launchStatus").style.color = "rgb(65, 159, 106)";
 } else {
-    document.getElementById("fuelStatus").innerHTML = `Fuel Level high enough for launch`
+    document.getElementById("fuelStatus").innerHTML = 'Fuel level high enough for launch'
 }
 if(Number(cargoMass)> 10000){
     list.style.visibility = "visible";
     document.getElementById('cargoStatus').innerHTML = `Cargo mass too heavy for launch`;
-    document.getElementById('launchStatus').innerHTML = 'Shuttle not ready for launch';
+    document.getElementById('launchStatus').innerHTML = 'Shuttle Not Ready for Launch'
     document.getElementById('launchStatus').style.color = "rgb(199,37,78)";
 } else{
     document.getElementById('cargoStatus').innerHTML = 'Cargo mass low enough for launch';
