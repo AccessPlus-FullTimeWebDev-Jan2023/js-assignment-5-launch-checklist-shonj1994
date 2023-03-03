@@ -39,7 +39,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   validateInput(cargoMass)=== "Not a Number") {
     alert("Make sure to enter valid information for each field!");
   }
-  if(validateInput(pilot) === "Not a Number" || validateInput=(copilot) === "Not a Number") {
+  if(validateInput(pilot) === "Not a Number" || validateInput===(copilot) === "Not a Number") {
     document.getElementById("pilotStatus").textContent = `Pilot ${pilot} is ready for launch`
     document.getElementById("copilotStatus").textContent = `Co Pilot ${copilot} is ready for launch`
     }
@@ -69,9 +69,11 @@ if(Number(cargoMass) <= 10000 && Number(fuelLevel) >= 10000){
 };
 
 async function myFetch() {
-    
+    let planetsReturned;
 
-    let planetsReturned = await (await fetch("https://handlers.education.launchcode.org/static/planets.json")).json();
+     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
+     return response.json()
+     });
 
     return planetsReturned;
 }
