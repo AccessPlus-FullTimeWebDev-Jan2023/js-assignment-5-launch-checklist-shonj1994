@@ -42,7 +42,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     else {
        // alert("test my else.");
     document.getElementById("pilotStatus").textContent = `Pilot ${pilot} is ready for launch`
-    document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} Bob is ready for launch`
+    document.getElementById("copilotStatus").textContent = `Co-pilot ${copilot} is ready for launch`
     
     if(Number(fuelLevel) < 10000 && Number(cargoMass)> 10000 ){
     list.style.visibility = "visible";
