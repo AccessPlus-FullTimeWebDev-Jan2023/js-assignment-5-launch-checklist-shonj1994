@@ -64,18 +64,16 @@ if(Number(cargoMass) <= 10000 && Number(fuelLevel) >= 10000){
     document.getElementById('fuelStatus').innerHTML = 'Fuel level high enough for launch';
     document.getElementById('cargoStatus').innerHTML = 'Cargo mass low enough for launch';
     document.getElementById('launchStatus').innerHTML = 'Shuttle is ready for Launch';
-    document.getElementById('launchStatus').style.color = "rgb(65, 159, 106";
+    document.getElementById('launchStatus').style.color = "rgb(65, 159, 106)";
     }
 };
 
 async function myFetch() {
     let planetsReturned;
 
-     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
-     return response.json()
-     });
-
+    planetsReturned = await (await fetch("https://handlers.education.launchcode.org/static/planets.json")).json();
     return planetsReturned;
+
 }
 
 function pickPlanet(planets) {
